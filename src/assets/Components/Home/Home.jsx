@@ -6,8 +6,11 @@ import { useState } from 'react'
 
 const Home = () => {
   const [count, setCount] = useState(0)
+  const [progress, setProgress]=useState(0);
   const HandleTasbih = () => {
     setCount(prev => (prev==100? 0:prev + 1));
+    const newProgress=(count==100?progress+1:0);
+    setProgress(newProgress);
     
   }
   return (
@@ -20,16 +23,19 @@ const Home = () => {
    
   >
 
-      <div className='hero-overlay'>
+      <div className='hero-overlay '>
         <h1 className='text-2xl mt-5 font-bold font-ubuntu'>Daily Tasbih</h1>
-      <div className="hero-content card h-full mx-auto text-center flex justify-center items-center " 
+      <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-center items-center " 
       >
         <button 
-        style={{ "--value": count }} aria-valuenow={count} role="progressbar"
-        className=' p-8 text-8xl border-4 h-40 w-32 shadow-xl radial-progress bg-primary text-primary-content border-primary' onClick={HandleTasbih}>
+        style={{ "--value": count } } 
+        aria-valuenow={count} 
+        role="progressbar"
+        className= 'relative size-32 p-8 font-bold text-8xl border-4 h-52 w-40 shadow-xl radial-progress bg-primary text-primary-content border-primary' 
+        onClick={HandleTasbih}>
           {count}
         </button>
-       
+       <div className="absolute top-75 right-35 size-14 badge badge-soft badge-warning">{progress}</div>
 
       </div>
       </div>
