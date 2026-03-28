@@ -23,7 +23,7 @@ const Home = () => {
    
   >
 
-      <div className='hero-overlay '>
+      <div className='hero-overlay py-10'>
         <h1 className='text-2xl mt-5 font-bold font-ubuntu'>Daily Tasbih</h1>
       <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-center items-center " 
       >
@@ -31,11 +31,11 @@ const Home = () => {
         style={{ "--value": count } } 
         aria-valuenow={count} 
         role="progressbar"
-        className= 'relative size-32 p-8 font-bold text-8xl border-4 h-52 w-40 shadow-xl radial-progress bg-primary text-primary-content border-primary' 
+        className= 'relative size-32 p-8 font-bold text-8xl border-4 lg:h-52 lg:w-40 shadow-xl radial-progress bg-primary text-primary-content border-primary' 
         onClick={HandleTasbih}>
           {count}
         </button>
-       <div className="absolute top-75 right-35 size-14 badge badge-soft badge-warning">{progress}</div>
+       <div className="absolute lg:top-75 lg:right-35 top-55 right-25 size-14 badge badge-soft badge-warning">{progress}</div>
 
       </div>
       </div>
