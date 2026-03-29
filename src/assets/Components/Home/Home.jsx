@@ -1,7 +1,8 @@
-import { HomeIcon, Moon, Settings, Settings2, Sun } from 'lucide-react';
+import { HomeIcon, Moon, RotateCcw, Settings, Settings2, Sun } from 'lucide-react';
 import React from 'react';
 import { useState } from 'react'
 import { data } from 'react-router';
+import Swal from 'sweetalert2';
 
 
 
@@ -10,6 +11,48 @@ const Home = () => {
   const [theme, setTheme] = useState('coffee');
   const [count, setCount] = useState(0)
   const [progress, setProgress] = useState(0);
+
+  const HandleReset = () => {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success btn-lg",
+      cancelButton: "btn btn-danger btn-lg mr-2"
+    },
+    buttonsStyling: false
+  });
+
+  swalWithBootstrapButtons.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, reset it!",
+    cancelButtonText: "No, cancel!",
+    reverseButtons: true
+  }).then((result) => {
+
+    if (result.isConfirmed) {
+      // ✅ RESET HERE
+      setCount(0);
+      setProgress(0);
+
+      swalWithBootstrapButtons.fire({
+        title: "Reset!",
+        text: "Your tasbih has been reset.",
+        icon: "success"
+      });
+    } 
+    
+    else if (result.dismiss === Swal.DismissReason.cancel) {
+      swalWithBootstrapButtons.fire({
+        title: "Cancelled",
+        text: "Your Tasbih count is safe :)",
+        icon: "error"
+      });
+    }
+  });
+};
+
   const HandleTasbih = () => {
     setCount(prev => {
       if (prev === 100) {
@@ -39,7 +82,7 @@ const Home = () => {
 
         <div className='flex justify-center items-center space-x-4 py-8'>
           <HomeIcon className='size-20 btn btn-primary p-4 btn-circle'></HomeIcon>
-          <Settings className='size-20  btn btn-primary p-4 btn-circle'></Settings>
+          <button onClick={HandleReset} className=''> <RotateCcw className='size-20 btn btn-primary p-4 btn-circle'></RotateCcw></button>
           <button onClick={toggleTheme}> {
             theme === 'cmyk' ? <Sun className='size-20  btn btn-primary p-4 btn-circle'></Sun>
               : <Moon className='size-20  btn btn-primary p-4 btn-circle'></Moon>
