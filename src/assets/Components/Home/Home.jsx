@@ -1,17 +1,26 @@
+import { HomeIcon, Moon, Settings, Settings2, Sun } from 'lucide-react';
 import React from 'react';
 import { useState } from 'react'
+import { data } from 'react-router';
 
 
 
 
 const Home = () => {
+  const [theme, setTheme]=useState('coffee');
   const [count, setCount] = useState(0)
   const [progress, setProgress]=useState(0);
   const HandleTasbih = () => {
     setCount(prev => (prev==100? 0:prev + 1));
-    const newProgress=(count==100?progress+1:0);
+    const newProgress=(count==100?progress+1: progress);
     setProgress(newProgress);
     
+  }
+
+  const toggleTheme=()=>{
+    const nextTheme=theme=='cmyk'?'coffee':'cmyk';
+    setTheme(nextTheme);
+    document.documentElement.setAttribute('data-theme', nextTheme)
   }
   return (
     <div className='hero min-h-screen text-center'
@@ -24,18 +33,31 @@ const Home = () => {
   >
 
       <div className='hero-overlay py-10'>
-        <h1 className='text-2xl mt-5 font-bold font-ubuntu'>Daily Tasbih</h1>
+        
+        <div className='flex justify-center items-center space-x-4 py-8'>
+          <HomeIcon className='size-20 btn btn-primary p-4 btn-circle'></HomeIcon>
+          <Settings className='size-20  btn btn-primary p-4 btn-circle'></Settings>
+        <button onClick={toggleTheme}> {
+            theme==='cmyk'?<Sun className='size-20  btn btn-primary p-4 btn-circle'></Sun>
+            : <Moon className='size-20  btn btn-primary p-4 btn-circle'></Moon>
+          }
+          </button> 
+
+        </div>
       <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-center items-center " 
       >
         <button 
         style={{ "--value": count } } 
         aria-valuenow={count} 
         role="progressbar"
-        className= 'relative size-32 p-8 font-bold text-8xl border-4 lg:h-52 lg:w-40 shadow-xl radial-progress bg-primary text-primary-content border-primary' 
+        className= 'relative size-32 p-8 font-bold text-6xl border-4 h-52 w-40  radial-progress bg-primary text-primary-content border-primary' 
         onClick={HandleTasbih}>
           {count}
+          
         </button>
-       <div className="absolute lg:top-75 lg:right-35 top-55 right-25 size-14 badge badge-soft badge-warning">{progress}</div>
+       <div className="rounded-box absolute lg:top-55 lg:right-35 top-55 right-25 size-14 badge badge-soft badge-warning">
+        {progress}
+        </div>
 
       </div>
       </div>
