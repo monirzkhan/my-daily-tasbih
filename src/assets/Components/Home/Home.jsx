@@ -112,13 +112,13 @@ const Home = () => {
           </button>
 
         </div>
-        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-start mt-35 md:mt-55 items-center "
+        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-start mt-32 md:mt-55 items-center "
         >
           <button
             style={{ "--value": count, "--thickness": "6px" }}
             aria-valuenow={count}
             role="progressbar"
-            className='active:scale-90 transition-transform duration-100 select-none md:hover:bg-primary hover:bg-primary relative size-32 p-8 font-bold md:text-8xl text-5xl border-4 md:h-52 h-40 w-28 md:w-40 radial-progress before:bg-transparent bg-primary text-primary-content border-primary'
+            className='active:scale-90 transition-transform duration-100 select-none md:hover:bg-primary hover:bg-primary relative size-32 p-8 font-bold md:text-8xl text-5xl border-4 md:h-52 h-36 w-24 md:w-40 radial-progress before:bg-transparent bg-primary text-primary-content border-primary'
             onClick={HandleTasbih}>
             {count}
 
