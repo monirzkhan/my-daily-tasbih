@@ -112,7 +112,7 @@ const Home = () => {
           </button>
 
         </div>
-        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-start mt-55 items-center "
+        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-start mt-35 md:mt-55 items-center "
         >
           <button
             style={{ "--value": count, "--thickness": "6px" }}
@@ -123,7 +123,7 @@ const Home = () => {
             {count}
 
           </button>
-          <div className="rounded-box absolute lg:top-55 lg:right-35 -top-2 right-25 size-14 text-lg badge badge-soft badge-warning">
+          <div className="rounded-box absolute lg:top-0 lg:right-35 -top-2 right-25 size-14 text-lg badge badge-soft badge-warning">
             {progress}
           </div>
 
