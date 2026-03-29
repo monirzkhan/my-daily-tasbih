@@ -11,9 +11,13 @@ const Home = () => {
   const [count, setCount] = useState(0)
   const [progress, setProgress]=useState(0);
   const HandleTasbih = () => {
-    setCount(prev => (prev==100? 0:prev + 1));
-    const newProgress=(count==100?progress+1: progress);
-    setProgress(newProgress);
+     setCount(prev => {
+    if (prev === 100) {
+      setProgress(p => p + 1);
+      return 0;
+    }
+    return prev + 1;
+  });
     
   }
 
@@ -47,10 +51,10 @@ const Home = () => {
       <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-center items-center " 
       >
         <button 
-        style={{ "--value": count } } 
+        style={{ "--value": count, "--thickness": "6px" } } 
         aria-valuenow={count} 
         role="progressbar"
-        className= 'relative size-32 p-8 font-bold text-6xl border-4 h-52 w-40  radial-progress bg-primary text-primary-content border-primary' 
+        className= 'active:scale-90 transition-transform duration-100 select-none md:hover:bg-primary hover:bg-primary relative size-32 p-8 font-bold text-5xl border-4 h-52 w-40 radial-progress before:bg-transparent bg-primary text-primary-content border-primary' 
         onClick={HandleTasbih}>
           {count}
           
