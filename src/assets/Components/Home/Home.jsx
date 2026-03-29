@@ -1,7 +1,7 @@
-import { HomeIcon, Moon, RotateCcw, Settings, Settings2, Sun } from 'lucide-react';
+import { HomeIcon, Moon, RotateCcw, Settings, Settings2, Sun, Volume2, VolumeX } from 'lucide-react';
 import React from 'react';
 import { useState } from 'react'
-import { data } from 'react-router';
+
 import Swal from 'sweetalert2';
 
 
@@ -32,7 +32,7 @@ const Home = () => {
   }).then((result) => {
 
     if (result.isConfirmed) {
-      // ✅ RESET HERE
+      
       setCount(0);
       setProgress(0);
 
@@ -65,7 +65,7 @@ const Home = () => {
   }
 
   const toggleTheme = () => {
-    const nextTheme = theme == 'cmyk' ? 'coffee' : 'cmyk';
+    const nextTheme = theme == 'autumn' ? 'coffee' : 'autumn';
     setTheme(nextTheme);
     document.documentElement.setAttribute('data-theme', nextTheme)
   }
@@ -78,19 +78,25 @@ const Home = () => {
 
     >
 
-      <div className='hero-overlay py-10'>
+      <div className='hero-overlay py-10 '>
 
-        <div className='flex justify-center items-center space-x-4 py-8'>
-          <HomeIcon className='size-20 btn btn-primary p-4 btn-circle'></HomeIcon>
-          <button onClick={HandleReset} className=''> <RotateCcw className='size-20 btn btn-primary p-4 btn-circle'></RotateCcw></button>
+        <div className='flex justify-center items-center space-x-4 py-8 px-4'>
+          <HomeIcon className='size-16 md:size-20  btn btn-primary p-4 btn-circle'></HomeIcon>
+          <button onClick={HandleReset} className=''> <RotateCcw className='size-16 md:size-20  btn btn-primary p-4 btn-circle'></RotateCcw></button>
           <button onClick={toggleTheme}> {
-            theme === 'cmyk' ? <Sun className='size-20  btn btn-primary p-4 btn-circle'></Sun>
-              : <Moon className='size-20  btn btn-primary p-4 btn-circle'></Moon>
+            theme === 'autumn' ? <Sun className='size-16 md:size-20  btn btn-primary p-4 btn-circle'></Sun>
+              : <Moon className='size-16 md:size-20  btn btn-primary p-4 btn-circle'></Moon>
           }
+          </button>
+          <button>
+            {
+              theme === 'autumn' ? <Volume2 className='size-16 md:size-20   btn btn-primary p-4 btn-circle'/>
+              : <VolumeX className='size-16 md:size-20  btn btn-primary p-4 btn-circle'/>
+            }
           </button>
 
         </div>
-        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-center items-center "
+        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-start mt-35 items-center "
         >
           <button
             style={{ "--value": count, "--thickness": "6px" }}
