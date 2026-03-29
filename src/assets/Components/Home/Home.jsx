@@ -5,8 +5,6 @@ import { useState } from 'react'
 import Swal from 'sweetalert2';
 
 
-
-
 const Home = () => {
   const [theme, setTheme] = useState('coffee');
   const [count, setCount] = useState(0)
@@ -112,7 +110,7 @@ const Home = () => {
           </button>
 
         </div>
-        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-start mt-32 md:mt-55 items-center "
+        <div className=" hero-content max-w-md card h-full mx-auto text-center flex justify-start mt-38 md:mt-55 items-center "
         >
           <button
             style={{ "--value": count, "--thickness": "6px" }}
